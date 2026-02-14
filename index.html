@@ -4,107 +4,150 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ჩემი ვალენტინი ❤️</title>
+
 <style>
-  body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
-    font-family: Georgia, serif;
-    color:#fff;
-    text-align:center;
-  }
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+  font-family: Georgia, serif;
+  color:#fff;
+  text-align:center;
+}
 
-  .container{
-    background: rgba(255,255,255,0.16);
-    padding: 52px 42px;
-    border-radius: 30px;
-    backdrop-filter: blur(14px);
-    box-shadow: 0 16px 45px rgba(0,0,0,0.28);
-    animation: fadeIn 1.6s ease;
-    max-width: 540px;
-  }
+.container{
+  background: rgba(255,255,255,0.16);
+  padding: 52px 42px;
+  border-radius: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 45px rgba(0,0,0,0.28);
+  animation: fadeIn 1.6s ease;
+  max-width: 560px;
+}
 
-  h1{ font-size: 38px; margin: 0 0 18px; }
-  p{ margin: 0 0 24px; opacity: 0.95; }
+h1{ font-size: 38px; margin: 0 0 18px; }
+p{ margin: 0 0 24px; opacity: 0.95; }
 
-  .btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
 
-  button{
-    padding: 14px 34px;
-    font-size: 18px;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: 0.25s;
-    user-select:none;
-  }
+button{
+  padding: 14px 34px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.25s;
+  user-select:none;
+}
 
-  .yes{
-    background: #fff;
-    color: #ff4e7a;
-    box-shadow: 0 0 22px rgba(255,255,255,0.75);
-  }
-  .yes:hover{ transform: scale(1.08); }
+.yes{
+  background: #fff;
+  color: #ff4e7a;
+  box-shadow: 0 0 22px rgba(255,255,255,0.75);
+}
+.yes:hover{ transform: scale(1.08); }
 
-  .no{
-    background: rgba(255,255,255,0.26);
-    color: #fff;
-  }
+.no{
+  background: rgba(255,255,255,0.26);
+  color: #fff;
+}
+.no:hover{ transform: scale(1.03); }
 
-  #message{
-    display:none;
-    margin-top: 24px;
-    font-size: 22px;
-    line-height: 1.45;
-    animation: appear 0.9s ease forwards;
-  }
+#message{
+  display:none;
+  margin-top: 24px;
+  font-size: 22px;
+  line-height: 1.45;
+  animation: appear 0.9s ease forwards;
+}
 
-  /* Floating roses */
-  .rose{
-    position:absolute;
-    font-size: 24px;
-    animation: floatUp linear forwards;
-    pointer-events:none;
-  }
+/* Floating roses */
+.rose{
+  position:absolute;
+  pointer-events:none;
+  font-size: 24px;
+  animation: floatUp linear forwards;
+}
 
-  /* MPUA kisses */
-  .kiss{
-    position:absolute;
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    animation: floatKiss linear forwards;
-    pointer-events:none;
-    white-space:nowrap;
-  }
+/* MPUA kisses */
+.kiss{
+  position:absolute;
+  pointer-events:none;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  animation: floatKiss linear forwards;
+  white-space:nowrap;
+}
 
-  @keyframes fadeIn{
-    from{ opacity:0; transform: translateY(30px); }
-    to{ opacity:1; transform: translateY(0); }
-  }
-  @keyframes appear{
-    from{ opacity:0; transform: scale(0.7); }
-    to{ opacity:1; transform: scale(1); }
-  }
+/* "გაიტყიპები" overlay */
+.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 24px;
+}
+.modal{
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(16px);
+  border-radius: 22px;
+  padding: 26px 22px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+  animation: appear 0.35s ease forwards;
+}
+.modal h2{
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+.modal p{
+  margin: 0 0 16px;
+  opacity: 0.95;
+  line-height: 1.35;
+}
+.modal .actions{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.modal .actions button{
+  padding: 12px 26px;
+  border-radius: 999px;
+}
 
-  @keyframes floatUp{
-    0%{ transform: translateY(110vh) rotate(0deg); opacity:1; }
-    100%{ transform: translateY(-15vh) rotate(25deg); opacity:0; }
-  }
-
-  @keyframes floatKiss{
-    0%{ transform: translateY(20px) scale(0.95); opacity:0; }
-    10%{ opacity:1; }
-    100%{ transform: translateY(-160px) scale(1.15); opacity:0; }
-  }
+@keyframes fadeIn{
+  from{ opacity:0; transform: translateY(30px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+@keyframes appear{
+  from{ opacity:0; transform: scale(0.7); }
+  to{ opacity:1; transform: scale(1); }
+}
+@keyframes floatUp{
+  0%{ transform: translateY(110vh) rotate(0deg); opacity:1; }
+  100%{ transform: translateY(-15vh) rotate(25deg); opacity:0; }
+}
+@keyframes floatKiss{
+  0%{ transform: translateY(20px) scale(0.95); opacity:0; }
+  10%{ opacity:1; }
+  100%{ transform: translateY(-160px) scale(1.15); opacity:0; }
+}
 </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -113,30 +156,39 @@
 
   <div class="btns">
     <button class="yes" onclick="love()">კი, მიყვარხარ ❤️</button>
-    <button class="no" onmouseover="runAway(this)">არა 😅</button>
+    <button class="no" onclick="noClicked()">არა 😅</button>
   </div>
 
   <div id="message">
-    მანძილი მხოლოდ რიცხვები არა იხვი მალე ჩამო 🌹<br/>
+    მანძილი მხოლოდ რიცხვებია, არა იხვი — მალე ჩამო 🌹<br/>
     მომენატრე ✨<br/>
-    შენს გარეშე გემრიელადაც ვერ ვჭამ💞
+    შენს გარეშე გემრიელადაც ვერ ვჭამ 💞
   </div>
 </div>
 
 <!-- Calm background music (starts on click) -->
 <audio id="bgm" loop preload="auto">
-  <!-- Royalty-free chill piano track -->
   <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_946f4a7a52.mp3?filename=gentle-piano-ambient-12512.mp3" type="audio/mpeg">
 </audio>
+
+<!-- “არა” overlay -->
+<div id="noOverlay" class="overlay" onclick="closeNo(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h2>გაიტყიპები 😈</h2>
+    <p>“არა” რომ დააჭირე… უკვე გვიანაა 😄💋<br/>აბა ახლა სწორად აირჩიე:</p>
+    <div class="actions">
+      <button class="yes" onclick="acceptFromNo()">კი, მიყვარხარ ❤️</button>
+      <button class="no" onclick="closeNo()">კარგი, აღარ ვაწვები 😅</button>
+    </div>
+  </div>
+</div>
 
 <script>
 let started = false;
 
 function love(){
-  // show message
   document.getElementById("message").style.display = "block";
 
-  // start music only once
   if(!started){
     const bgm = document.getElementById("bgm");
     bgm.volume = 0.35;
@@ -144,9 +196,21 @@ function love(){
     started = true;
   }
 
-  // roses + MPUA kisses
   spawnRoses(22);
   spawnKisses(30);
+}
+
+function noClicked(){
+  document.getElementById("noOverlay").style.display = "flex";
+}
+
+function closeNo(e){
+  document.getElementById("noOverlay").style.display = "none";
+}
+
+function acceptFromNo(){
+  closeNo();
+  love();
 }
 
 function spawnRoses(n){
@@ -176,12 +240,6 @@ function spawnKisses(n){
       setTimeout(()=>k.remove(), 2500);
     }, Math.random()*700);
   }
-}
-
-function runAway(btn){
-  btn.style.position = "absolute";
-  btn.style.left = (Math.random()*80 + 10) + "vw";
-  btn.style.top  = (Math.random()*70 + 10) + "vh";
 }
 </script>
 
